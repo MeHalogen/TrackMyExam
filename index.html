@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Entrance Exam Tracker 2026 | Never Miss a Deadline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-neutral-50 text-gray-900 transition-colors duration-300">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold font-montserrat">Exam Tracker 2026</h1>
+                        <p class="text-xs text-gray-600">Engineering Entrance Exams</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Toggle dark mode">
+                        <svg id="moon-icon" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg id="sun-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold font-montserrat mb-4">Never Miss an Engineering Entrance Exam Again</h2>
+                <p class="text-xl md:text-2xl mb-8 text-blue-100">Track 21 engineering entrance exams across India. Stay updated with deadlines, exam dates, and never miss an application window.</p>
+                
+                <!-- Hero Search Bar -->
+                <div class="max-w-2xl mx-auto mb-8">
+                    <div class="relative">
+                        <input type="text" id="hero-search" placeholder="Search for JEE, BITSAT, MHT CET, or any exam..." class="w-full px-6 py-4 rounded-xl text-gray-900 text-lg shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300" autocomplete="off">
+                        <svg class="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <div id="autocomplete-results" class="hidden absolute top-full left-0 right-0 mt-2 bg-white text-gray-900 rounded-lg shadow-2xl max-h-64 overflow-y-auto z-50"></div>
+                    </div>
+                </div>
+
+                <!-- Quick Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <button data-filter="all" class="quick-filter-btn active px-6 py-3 rounded-lg font-semibold transition-all">All Exams</button>
+                    <button data-filter="G" class="quick-filter-btn px-6 py-3 rounded-lg font-semibold transition-all">National</button>
+                    <button data-filter="P" class="quick-filter-btn px-6 py-3 rounded-lg font-semibold transition-all">Private</button>
+                    <button data-filter="S" class="quick-filter-btn px-6 py-3 rounded-lg font-semibold transition-all">State</button>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="scrollToExams()" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">View All Exams</button>
+                    <button onclick="scrollToDashboard()" class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg transition-all">Create Your Dashboard</button>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-3xl font-bold font-montserrat mb-2">21</div>
+                        <div class="text-blue-100">Exams Tracked</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-3xl font-bold font-montserrat mb-2">Oct 25 - Jul 26</div>
+                        <div class="text-blue-100">Timeline Coverage</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-3xl font-bold font-montserrat mb-2" id="days-until-first">0</div>
+                        <div class="text-blue-100">Days Until First Deadline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Deadlines Preview -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold font-montserrat mb-6 text-center">Urgent Deadlines</h3>
+            <div id="urgent-deadlines" class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard Section -->
+    <main id="dashboard-section" class="py-12">
+        <div class="container mx-auto px-4">
+            
+            <!-- Advanced Filters -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+                    <h3 class="text-xl font-bold font-montserrat">Advanced Filters</h3>
+                    <button id="clear-filters" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">Clear All Filters</button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Type Filter -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Exam Type</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button data-type-filter="all" class="type-filter-btn active text-sm px-4 py-2 rounded-lg transition-all">All</button>
+                            <button data-type-filter="G" class="type-filter-btn text-sm px-4 py-2 rounded-lg transition-all">National</button>
+                            <button data-type-filter="P" class="type-filter-btn text-sm px-4 py-2 rounded-lg transition-all">Private</button>
+                            <button data-type-filter="S" class="type-filter-btn text-sm px-4 py-2 rounded-lg transition-all">State</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Status Filter -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Application Status</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button data-status-filter="all" class="status-filter-btn active text-sm px-4 py-2 rounded-lg transition-all">All</button>
+                            <button data-status-filter="open" class="status-filter-btn text-sm px-4 py-2 rounded-lg transition-all">Open</button>
+                            <button data-status-filter="upcoming" class="status-filter-btn text-sm px-4 py-2 rounded-lg transition-all">Upcoming</button>
+                            <button data-status-filter="closed" class="status-filter-btn text-sm px-4 py-2 rounded-lg transition-all">Closed</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Tracked Filter -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Show Only</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button id="show-tracked" class="text-sm px-4 py-2 rounded-lg transition-all bg-gray-100 hover:bg-gray-200">Tracked Exams (<span id="tracked-count">0</span>)</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 text-sm text-gray-600">
+                    <span id="results-count">Showing 21 of 21 exams</span>
+                </div>
+            </div>
+
+            <!-- Dashboard Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                
+                <!-- Main Content Area (3 columns) -->
+                <div class="lg:col-span-3 space-y-8">
+                    
+                    <!-- Timeline Chart -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h3 class="text-2xl font-bold font-montserrat mb-4">Exam Timeline Visualization</h3>
+                        <p class="text-sm text-gray-600 mb-6">Blue bars show application windows, red bars show exam periods. Hover for details.</p>
+                        <div class="chart-container" style="position: relative; height: 60vh; max-height: 800px;">
+                            <canvas id="timelineChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Exam Cards Grid -->
+                    <div id="exam-cards-section">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-bold font-montserrat">All Exams</h3>
+                            <select id="sort-select" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="deadline">Sort by Deadline</option>
+                                <option value="name">Sort by Name</option>
+                                <option value="type">Sort by Type</option>
+                            </select>
+                        </div>
+                        <div id="exam-cards-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar (1 column) - Desktop Only -->
+                <div class="lg:col-span-1 space-y-6 hidden lg:block">
+                    
+                    <!-- Quick Stats -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h4 class="text-lg font-bold font-montserrat mb-4">Quick Stats</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-2xl font-bold text-blue-600" id="sidebar-tracked">0</div>
+                                <div class="text-sm text-gray-600">Exams Tracked</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-600" id="sidebar-open">0</div>
+                                <div class="text-sm text-gray-600">Applications Open</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-orange-600" id="sidebar-next">--</div>
+                                <div class="text-sm text-gray-600">Next Deadline</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-purple-600" id="sidebar-busiest">--</div>
+                                <div class="text-sm text-gray-600">Busiest Month</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exam Type Breakdown -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h4 class="text-lg font-bold font-montserrat mb-4">Exam Type Breakdown</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">National</span>
+                                    <span class="text-sm font-semibold" id="breakdown-national">0</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="bar-national" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">Private</span>
+                                    <span class="text-sm font-semibold" id="breakdown-private">0</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="bar-private" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">State</span>
+                                    <span class="text-sm font-semibold" id="breakdown-state">0</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="bar-state" class="bg-purple-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Need Help -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+                        <h4 class="text-lg font-bold font-montserrat mb-3">Need Help?</h4>
+                        <div class="space-y-2 text-sm">
+                            <a href="#" class="block text-blue-600 hover:text-blue-800 font-semibold">FAQ</a>
+                            <a href="#" class="block text-blue-600 hover:text-blue-800 font-semibold">Contact Support</a>
+                            <a href="#" class="block text-blue-600 hover:text-blue-800 font-semibold">Exam Calendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Exam Detail Modal -->
+    <div id="exam-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+                <h3 id="modal-exam-name" class="text-2xl font-bold font-montserrat"></h3>
+                <button onclick="closeModal()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="modal-content" class="p-6">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Bar -->
+    <div id="notification-bar" class="fixed bottom-0 left-0 right-0 z-40 transform translate-y-full transition-transform duration-300">
+        <!-- Populated by JS -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

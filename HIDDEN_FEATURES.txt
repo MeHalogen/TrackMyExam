@@ -1,0 +1,159 @@
+# Hidden Features - Preserved for Future Use
+
+## Date: November 14, 2025
+
+This file documents features that have been hidden from the UI but whose code has been preserved for future implementation.
+
+---
+
+## Features Currently Hidden:
+
+### 1. "Create Your Dashboard" Button
+- **Location**: Hero section (index.html)
+- **Functionality**: Was intended to scroll users to the dashboard section
+- **Code Status**: Commented out in HTML
+- **Reason for Hiding**: Simplifying initial user experience
+- **Future Use**: Can be re-enabled when dashboard customization features are ready
+
+### 2. Timeline Coverage Stat
+- **Location**: Hero stats section (index.html)
+- **Display**: "Oct 25 - Jul 26 / Timeline Coverage"
+- **Code Status**: Commented out in HTML
+- **Reason for Hiding**: Redundant information, takes up space
+- **Future Use**: Can be shown in a more detailed statistics page
+
+### 3. Days Until First Deadline Tile
+- **Location**: Hero stats section (index.html)
+- **Display**: Countdown to first upcoming deadline
+- **Code Status**: Commented out in HTML and JavaScript (app.js - updateDaysUntilFirst function)
+- **Reason for Hiding**: Information available in exam cards already
+- **Future Use**: Could be part of a personalized dashboard
+
+### 4. Urgent Deadlines Section
+- **Location**: Below hero section (index.html)
+- **Display**: Shows exams with deadlines within 3-7 days
+- **Code Status**: Commented out in HTML and JavaScript (app.js - renderUrgentDeadlines function)
+- **Reason for Hiding**: Redundant with status badges on exam cards
+- **Future Use**: Could be restored as a notification/alert system
+
+### 5. Tracking Feature (Complete System)
+- **Location**: Throughout application
+- **Components Hidden**:
+  - Track/Tracked buttons on exam cards
+  - Track buttons in exam modals
+  - "Tracked Exams" filter button
+  - Tracked exam counter in sidebar
+  - Blue border highlight for tracked cards
+  - Track notifications
+  
+- **Code Preserved**:
+  - `trackedExams` Set in app.js
+  - `toggleTracking()` function
+  - All tracking-related event handlers
+  - CSS styles for .tracked class
+  - Notification system for tracking
+  
+- **Code Status**: 
+  - HTML: Track buttons commented out with <!-- TRACKING FEATURE -->
+  - JavaScript: Functions preserved but not called
+  - CSS: Styles remain intact
+  
+- **Reason for Hiding**: 
+  - Simplifying initial version
+  - Tracking requires backend/localStorage implementation for persistence
+  - Current in-memory tracking lost on page refresh
+  
+- **Future Use**: 
+  - Implement with localStorage for client-side persistence
+  - OR integrate with backend for user accounts
+  - Add export/import tracked exams
+  - Email reminders for tracked exam deadlines
+  - Calendar integration (Google Calendar, iCal)
+
+---
+
+## How to Re-enable Features:
+
+### For HTML Elements:
+1. Search for the comment marker (e.g., <!-- TRACKING FEATURE -->)
+2. Uncomment the HTML block
+3. Test functionality
+
+### For JavaScript Functions:
+1. Functions are preserved and working
+2. Uncomment the function calls
+3. Uncomment related event listeners
+4. Test thoroughly
+
+### For CSS Styles:
+- All styles remain active
+- No changes needed to re-enable
+
+---
+
+## Notes for Future Implementation:
+
+### Tracking Feature Enhancement Ideas:
+1. **Persistence**: Use localStorage or backend database
+2. **Reminders**: Browser notifications, email alerts
+3. **Export**: PDF, CSV, iCal formats
+4. **Sharing**: Share tracked exams with friends
+5. **Analytics**: Show stats for tracked exams
+6. **Comparison**: Compare tracked exams side-by-side
+
+### Dashboard Customization Ideas:
+1. **Drag & Drop**: Rearrange exam cards
+2. **Custom Views**: List, grid, calendar views
+3. **Filters**: Save custom filter presets
+4. **Themes**: Custom color schemes
+5. **Widgets**: Add custom information widgets
+
+---
+
+## Testing Checklist When Re-enabling:
+
+- [ ] Visual appearance in light mode
+- [ ] Visual appearance in dark mode
+- [ ] Functionality works as expected
+- [ ] No console errors
+- [ ] Responsive on mobile
+- [ ] Accessibility (keyboard navigation, screen readers)
+- [ ] Cross-browser compatibility
+
+---
+
+## Code Locations:
+
+### HTML (index.html):
+- Lines with "Create Your Dashboard" button
+- Hero stats tiles (Timeline Coverage, Days Until)
+- Urgent Deadlines section
+- Track buttons in exam cards
+- Track buttons in modal
+- Tracked filter button
+
+### JavaScript (app.js):
+- `trackedExams` variable
+- `toggleTracking()` function
+- `renderUrgentDeadlines()` function
+- `updateDaysUntilFirst()` function
+- Event listeners for tracking buttons
+
+### CSS (style.css):
+- `.tracked` class for exam cards
+- `.track-btn` styles
+- `.urgent-card` styles
+- Tracking-related animations
+
+---
+
+## Version History:
+
+**v1.1 (Nov 14, 2025)**
+- Hidden: Tracking feature, Urgent Deadlines, Timeline Coverage, Days Until, Create Dashboard button
+- Reason: Simplify UI, focus on core exam listing and filtering
+- Code Status: All preserved and commented
+
+---
+
+End of Hidden Features Documentation

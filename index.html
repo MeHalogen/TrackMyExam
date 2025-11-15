@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Entrance Exam Tracker 2026 | Never Miss a Deadline</title>
+    <title>TrackMyExam - Engineering Entrance Exam Tracker 2026 | Never Miss a Deadline</title>
+    <meta name="description" content="TrackMyExam helps you track 21 engineering entrance exams across India including JEE, BITSAT, MHT CET and more. Never miss an application deadline.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,8 +25,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold font-montserrat">Exam Tracker 2026</h1>
-                        <p class="text-xs text-gray-600">Engineering Entrance Exams</p>
+                        <h1 class="text-xl font-bold font-montserrat">TrackMyExam</h1>
+                        <p class="text-xs text-gray-600">Stay ahead. Stay prepared.</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
@@ -71,37 +72,40 @@
                 <!-- CTA Buttons -->
                 <div class="flex flex-wrap justify-center gap-4 mb-12">
                     <button onclick="scrollToExams()" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">View All Exams</button>
-                    <button onclick="scrollToDashboard()" class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg transition-all">Create Your Dashboard</button>
+                    <!-- HIDDEN FEATURE: Create Your Dashboard button - preserved for future use -->
+                    <!-- <button onclick="scrollToDashboard()" class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg transition-all">Create Your Dashboard</button> -->
                 </div>
 
                 <!-- Stats -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-3xl mx-auto">
                     <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                         <div class="text-3xl font-bold font-montserrat mb-2">21</div>
                         <div class="text-blue-100">Exams Tracked</div>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    <!-- HIDDEN FEATURE: Timeline Coverage tile - preserved for future use -->
+                    <!-- <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                         <div class="text-3xl font-bold font-montserrat mb-2">Oct 25 - Jul 26</div>
                         <div class="text-blue-100">Timeline Coverage</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    </div> -->
+                    <!-- HIDDEN FEATURE: Days Until First Deadline tile - preserved for future use -->
+                    <!-- <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                         <div class="text-3xl font-bold font-montserrat mb-2" id="days-until-first">0</div>
                         <div class="text-blue-100">Days Until First Deadline</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Upcoming Deadlines Preview -->
-    <section class="py-12 bg-white">
+    <!-- HIDDEN FEATURE: Urgent Deadlines Section - preserved for future use -->
+    <!-- <section class="py-12 bg-white">
         <div class="container mx-auto px-4">
             <h3 class="text-3xl font-bold font-montserrat mb-6 text-center">Urgent Deadlines</h3>
             <div id="urgent-deadlines" class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <!-- Populated by JS -->
+                Populated by JS
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Main Dashboard Section -->
     <main id="dashboard-section" class="py-12">
@@ -137,13 +141,13 @@
                         </div>
                     </div>
                     
-                    <!-- Tracked Filter -->
+                    <!-- HIDDEN FEATURE: Tracked Filter and Show Only section
                     <div>
                         <label class="block text-sm font-semibold mb-2">Show Only</label>
                         <div class="flex flex-wrap gap-2">
                             <button id="show-tracked" class="text-sm px-4 py-2 rounded-lg transition-all bg-gray-100 hover:bg-gray-200">Tracked Exams (<span id="tracked-count">0</span>)</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <div class="mt-4 text-sm text-gray-600">
@@ -180,6 +184,29 @@
                             <!-- Populated by JS -->
                         </div>
                     </div>
+
+                    <!-- Exam Calendar Table -->
+                    <div id="exam-table" class="bg-white rounded-xl shadow-sm p-6 mt-8">
+                        <h3 class="text-2xl font-bold font-montserrat mb-6">Complete Exam Calendar</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b-2 border-gray-300">
+                                        <th class="text-left p-3 font-bold">Exam Name</th>
+                                        <th class="text-left p-3 font-bold">Type</th>
+                                        <th class="text-left p-3 font-bold">Application Opens</th>
+                                        <th class="text-left p-3 font-bold">Application Closes</th>
+                                        <th class="text-left p-3 font-bold">Exam Date</th>
+                                        <th class="text-left p-3 font-bold">Result Date</th>
+                                        <th class="text-left p-3 font-bold">Conducting Body</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="exam-table-body">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Right Sidebar (1 column) - Desktop Only -->
@@ -189,21 +216,31 @@
                     <div class="bg-white rounded-xl shadow-sm p-6">
                         <h4 class="text-lg font-bold font-montserrat mb-4">Quick Stats</h4>
                         <div class="space-y-4">
-                            <div>
+                            <!-- HIDDEN FEATURE: Exams Tracked stat - preserved for future use -->
+                            <!-- <div>
                                 <div class="text-2xl font-bold text-blue-600" id="sidebar-tracked">0</div>
                                 <div class="text-sm text-gray-600">Exams Tracked</div>
-                            </div>
+                            </div> -->
                             <div>
                                 <div class="text-2xl font-bold text-green-600" id="sidebar-open">0</div>
                                 <div class="text-sm text-gray-600">Applications Open</div>
                             </div>
+                            <!-- HIDDEN FEATURE: Next Deadline
                             <div>
                                 <div class="text-2xl font-bold text-orange-600" id="sidebar-next">--</div>
                                 <div class="text-sm text-gray-600">Next Deadline</div>
+                            </div> -->
+                            <div title="The month when most exam applications start accepting submissions">
+                                <div class="text-2xl font-bold text-blue-600" id="sidebar-busiest-open">--</div>
+                                <div class="text-sm text-gray-600">Peak Application Start</div>
                             </div>
-                            <div>
-                                <div class="text-2xl font-bold text-purple-600" id="sidebar-busiest">--</div>
-                                <div class="text-sm text-gray-600">Busiest Month</div>
+                            <div title="The month when most exam application deadlines occur">
+                                <div class="text-2xl font-bold text-orange-600" id="sidebar-busiest-close">--</div>
+                                <div class="text-sm text-gray-600">Peak Deadline Month</div>
+                            </div>
+                            <div title="The month when most exams are conducted">
+                                <div class="text-2xl font-bold text-purple-600" id="sidebar-busiest-exam">--</div>
+                                <div class="text-sm text-gray-600">Peak Exam Month</div>
                             </div>
                         </div>
                     </div>
@@ -246,9 +283,8 @@
                     <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
                         <h4 class="text-lg font-bold font-montserrat mb-3">Need Help?</h4>
                         <div class="space-y-2 text-sm">
-                            <a href="#" class="block text-blue-600 hover:text-blue-800 font-semibold">FAQ</a>
-                            <a href="#" class="block text-blue-600 hover:text-blue-800 font-semibold">Contact Support</a>
-                            <a href="#" class="block text-blue-600 hover:text-blue-800 font-semibold">Exam Calendar</a>
+                            <a href="mailto:mehal2001@gmail.com" class="block text-blue-600 hover:text-blue-800 font-semibold">Contact Support</a>
+                            <a href="#exam-table" class="block text-blue-600 hover:text-blue-800 font-semibold">Exam Calendar</a>
                         </div>
                     </div>
                 </div>
@@ -277,6 +313,15 @@
     <div id="notification-bar" class="fixed bottom-0 left-0 right-0 z-40 transform translate-y-full transition-transform duration-300">
         <!-- Populated by JS -->
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-600 text-sm">
+                Built by <span class="font-semibold text-gray-900">Mehal Srivastava</span> • For Students, With Purpose
+            </p>
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>

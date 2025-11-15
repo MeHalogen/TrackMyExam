@@ -612,6 +612,14 @@ function closeModal() {
     document.getElementById('exam-modal').classList.add('hidden');
 }
 
+function openContactModal() {
+    document.getElementById('contact-modal').classList.remove('hidden');
+}
+
+function closeContactModal() {
+    document.getElementById('contact-modal').classList.add('hidden');
+}
+
 function showNotification(message, type = 'info') {
     const bar = document.getElementById('notification-bar');
     const typeClass = `notification-${type}`;
@@ -926,6 +934,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal Close on Outside Click
     document.getElementById('exam-modal').addEventListener('click', (e) => {
         if (e.target.id === 'exam-modal') closeModal();
+    });
+    
+    // Contact Modal Close on Outside Click
+    document.getElementById('contact-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'contact-modal') closeContactModal();
     });
     
     // Autocomplete

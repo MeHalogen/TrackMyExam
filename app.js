@@ -1,29 +1,29 @@
 // Exam Data with Enhanced Information
 const examData = [
-    { name: "JEE Mains Session 1", type: "G", open: "Friday, October 31, 2025", close: "Thursday, November 27, 2025", exam: "Jan 21 - 30, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "3 hours" },
-    { name: "JEE Mains Session 2", type: "G", open: "Late Jan 2026", close: "Feb 2026", exam: "Apr 1 - 10, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "3 hours" },
-    { name: "BITSAT Session 1", type: "P", open: "Jan 2026", close: "Apr 2026", exam: "May 26 - 30, 2026", result: "Date TBA", conductingBody: "BITS", examMode: "Online", duration: "3 hours" },
-    { name: "BITSAT Session 2", type: "P", open: "Tuesday, May 26, 2026", close: "Wednesday, June 10, 2026", exam: "Jun 22 - 26, 2026", result: "Date TBA", conductingBody: "BITS", examMode: "Online", duration: "3 hours" },
-    { name: "COMEDK UGET", type: "P", open: "Tuesday, February 3, 2026", close: "Friday, March 20, 2026", exam: "Sunday, May 10, 2026", result: "Date TBA", conductingBody: "COMEDK", examMode: "Online", duration: "3 hours" },
-    { name: "CUET", type: "G", open: "Sunday, March 1, 2026", close: "Sunday, March 22, 2026", exam: "May 13 - Jun 3, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "2 hours" },
-    { name: "MHT CET", type: "S", open: "Tuesday, December 30, 2025", close: "Sunday, February 15, 2026", exam: "Apr 9 - 27, 2026", result: "Date TBA", conductingBody: "Maharashtra Board", examMode: "Online", duration: "3 hours" },
-    { name: "WBJEE", type: "S", open: "Dec 2025", close: "Jan 2026", exam: "April 2026", result: "Date TBA", conductingBody: "West Bengal Board", examMode: "Online", duration: "3 hours" },
-    { name: "VITEEE", type: "P", open: "Friday, October 24, 2025", close: "Tuesday, March 31, 2026", exam: "Apr 28 - May 3, 2026", result: "Date TBA", conductingBody: "VIT", examMode: "Online", duration: "2.5 hours" },
-    { name: "MET 2026 (Phase 1)", type: "P", open: "Tuesday, September 30, 2025", close: "Sunday, March 15, 2026", exam: "Apr 18 - 19, 2026", result: "Date TBA", conductingBody: "Manipal", examMode: "Online", duration: "3 hours" },
-    { name: "LPUNEST 2026 (Phase 1)", type: "P", open: "Tuesday, October 14, 2025", close: "Thursday, January 15, 2026", exam: "Jan 10 – Feb 5, 2026", result: "Date TBA", conductingBody: "LPU", examMode: "Online", duration: "3 hours" },
-    { name: "SRMJEEE 2026 - Phase 1", type: "P", open: "Thursday, October 30, 2025", close: "Thursday, April 16, 2026", exam: "Apr 23 - 28, 2026", result: "Date TBA", conductingBody: "SRM", examMode: "Online", duration: "3 hours" },
-    { name: "KIITEE 2026 - Phase 1", type: "P", open: "Tuesday, November 11, 2025", close: "Apr-26", exam: "Apr-26", result: "Date TBA", conductingBody: "KIIT", examMode: "Online", duration: "3 hours" },
-    { name: "GUJCET", type: "S", open: "Dec 2025 - Jan 2026", close: "Jan-26", exam: "Sunday, March 29, 2026", result: "Date TBA", conductingBody: "Gujarat Board", examMode: "Online", duration: "3 hours" },
-    { name: "AEEE 2026 - Phase 1", type: "P", open: "Wednesday, October 29, 2025", close: "Thursday, January 15, 2026", exam: "Jan 29 – Feb 1, 2026", result: "Date TBA", conductingBody: "Amrita", examMode: "Online", duration: "3 hours" },
-    { name: "KCET 2026", type: "S", open: "Friday, January 23, 2026", close: "Tuesday, February 24, 2026", exam: "Apr 16 - 17, 2026", result: "Date TBA", conductingBody: "Karnataka Board", examMode: "Online", duration: "3 hours" },
-    { name: "KEAM 2026", type: "S", open: "Feb-26", close: "Mar-26", exam: "Apr 15 - 21, 2026", result: "Date TBA", conductingBody: "Kerala Board", examMode: "Online", duration: "3 hours" },
-    { name: "TS EAMCET 2026", type: "S", open: "Wednesday, February 25, 2026", close: "Saturday, April 4, 2026", exam: "May 2 - 5, 2026", result: "Date TBA", conductingBody: "Telangana Board", examMode: "Online", duration: "3 hours" },
-    { name: "JEE Advanced 2026", type: "G", open: "Apr-26", close: "May-26", exam: "May-26", result: "Date TBA", conductingBody: "IIT", examMode: "Online", duration: "3 hours each" },
-    { name: "SRMJEEE 2026 - Phase 2", type: "P", open: "TBA", close: "TBA", exam: "Jun 10 - 15, 2026", result: "Date TBA", conductingBody: "SRM", examMode: "Online", duration: "3 hours" },
-    { name: "SRMJEEE 2026 - Phase 3", type: "P", open: "TBA", close: "TBA", exam: "Jul 4 - 5, 2026", result: "Date TBA", conductingBody: "SRM", examMode: "Online", duration: "3 hours" }
+    { name: "JEE Mains Session 1", fullName: "Joint Entrance Examination Main", type: "G", open: "Friday, October 31, 2025", close: "Thursday, November 27, 2025", exam: "Jan 21 - 30, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "3 hours" },
+    { name: "JEE Mains Session 2", fullName: "Joint Entrance Examination Main", type: "G", open: "Late Jan 2026", close: "Feb 2026", exam: "Apr 1 - 10, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "3 hours" },
+    { name: "BITSAT Session 1", fullName: "Birla Institute of Technology and Science Admission Test", type: "P", open: "Jan 2026", close: "Apr 2026", exam: "May 26 - 30, 2026", result: "Date TBA", conductingBody: "BITS", examMode: "Online", duration: "3 hours" },
+    { name: "BITSAT Session 2", fullName: "Birla Institute of Technology and Science Admission Test", type: "P", open: "Tuesday, May 26, 2026", close: "Wednesday, June 10, 2026", exam: "Jun 22 - 26, 2026", result: "Date TBA", conductingBody: "BITS", examMode: "Online", duration: "3 hours" },
+    { name: "COMEDK UGET", fullName: "Consortium of Medical, Engineering and Dental Colleges of Karnataka Undergraduate Entrance Test", type: "P", open: "Tuesday, February 3, 2026", close: "Friday, March 20, 2026", exam: "Sunday, May 10, 2026", result: "Date TBA", conductingBody: "COMEDK", examMode: "Online", duration: "3 hours" },
+    { name: "CUET", fullName: "Common University Entrance Test", type: "G", open: "Sunday, March 1, 2026", close: "Sunday, March 22, 2026", exam: "May 13 - Jun 3, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "2 hours" },
+    { name: "MHT CET", fullName: "Maharashtra Common Entrance Test", type: "S", open: "Tuesday, December 30, 2025", close: "Sunday, February 15, 2026", exam: "Apr 9 - 27, 2026", result: "Date TBA", conductingBody: "Maharashtra Board", examMode: "Online", duration: "3 hours" },
+    { name: "WBJEE", fullName: "West Bengal Joint Entrance Examination", type: "S", open: "Dec 2025", close: "Jan 2026", exam: "April 2026", result: "Date TBA", conductingBody: "West Bengal Board", examMode: "Online", duration: "3 hours" },
+    { name: "VITEEE", fullName: "VIT Engineering Entrance Examination", type: "P", open: "Friday, October 24, 2025", close: "Tuesday, March 31, 2026", exam: "Apr 28 - May 3, 2026", result: "Date TBA", conductingBody: "VIT", examMode: "Online", duration: "2.5 hours" },
+    { name: "MET 2026 (Phase 1)", fullName: "Manipal Entrance Test", type: "P", open: "Tuesday, September 30, 2025", close: "Sunday, March 15, 2026", exam: "Apr 18 - 19, 2026", result: "Date TBA", conductingBody: "Manipal", examMode: "Online", duration: "3 hours" },
+    { name: "LPUNEST 2026 (Phase 1)", fullName: "Lovely Professional University National Entrance and Scholarship Test", type: "P", open: "Tuesday, October 14, 2025", close: "Thursday, January 15, 2026", exam: "Jan 10 – Feb 5, 2026", result: "Date TBA", conductingBody: "LPU", examMode: "Online", duration: "3 hours" },
+    { name: "SRMJEEE 2026 - Phase 1", fullName: "SRM Joint Engineering Entrance Examination", type: "P", open: "Thursday, October 30, 2025", close: "Thursday, April 16, 2026", exam: "Apr 23 - 28, 2026", result: "Date TBA", conductingBody: "SRM", examMode: "Online", duration: "3 hours" },
+    { name: "KIITEE 2026 - Phase 1", fullName: "Kalinga Institute of Industrial Technology Entrance Examination", type: "P", open: "Tuesday, November 11, 2025", close: "Apr-26", exam: "Apr-26", result: "Date TBA", conductingBody: "KIIT", examMode: "Online", duration: "3 hours" },
+    { name: "GUJCET", fullName: "Gujarat Common Entrance Test", type: "S", open: "Dec 2025 - Jan 2026", close: "Jan-26", exam: "Sunday, March 29, 2026", result: "Date TBA", conductingBody: "Gujarat Board", examMode: "Online", duration: "3 hours" },
+    { name: "AEEE 2026 - Phase 1", fullName: "Amrita Engineering Entrance Examination", type: "P", open: "Wednesday, October 29, 2025", close: "Thursday, January 15, 2026", exam: "Jan 29 – Feb 1, 2026", result: "Date TBA", conductingBody: "Amrita", examMode: "Online", duration: "3 hours" },
+    { name: "KCET 2026", fullName: "Karnataka Common Entrance Test", type: "S", open: "Friday, January 23, 2026", close: "Tuesday, February 24, 2026", exam: "Apr 16 - 17, 2026", result: "Date TBA", conductingBody: "Karnataka Board", examMode: "Online", duration: "3 hours" },
+    { name: "KEAM 2026", fullName: "Kerala Engineering Architecture Medical Examination", type: "S", open: "Feb-26", close: "Mar-26", exam: "Apr 15 - 21, 2026", result: "Date TBA", conductingBody: "Kerala Board", examMode: "Online", duration: "3 hours" },
+    { name: "TS EAMCET 2026", fullName: "Telangana State Engineering, Agriculture and Medical Common Entrance Test", type: "S", open: "Wednesday, February 25, 2026", close: "Saturday, April 4, 2026", exam: "May 2 - 5, 2026", result: "Date TBA", conductingBody: "Telangana Board", examMode: "Online", duration: "3 hours" },
+    { name: "JEE Advanced 2026", fullName: "Joint Entrance Examination Advanced", type: "G", open: "Apr-26", close: "May-26", exam: "May-26", result: "Date TBA", conductingBody: "IIT", examMode: "Online", duration: "3 hours each" },
+    { name: "SRMJEEE 2026 - Phase 2", fullName: "SRM Joint Engineering Entrance Examination", type: "P", open: "TBA", close: "TBA", exam: "Jun 10 - 15, 2026", result: "Date TBA", conductingBody: "SRM", examMode: "Online", duration: "3 hours" },
+    { name: "SRMJEEE 2026 - Phase 3", fullName: "SRM Joint Engineering Entrance Examination", type: "P", open: "TBA", close: "TBA", exam: "Jul 4 - 5, 2026", result: "Date TBA", conductingBody: "SRM", examMode: "Online", duration: "3 hours" }
 ];
 
-// Month mapping for timeline
+// Month mapping for timeline 
 const monthToNumeric = {
     "SEP 2025": 0.5, "OCT 2025": 1, "NOV 2025": 2, "DEC 2025": 3,
     "JAN 2026": 4, "FEB 2026": 5, "MAR 2026": 6,
@@ -47,36 +47,41 @@ let timelineChart;
 function extractMonthYear(dateStr) {
     if (!dateStr || dateStr.toUpperCase() === 'TBA') return null;
     const upperStr = dateStr.toUpperCase();
-    const parts = upperStr.split(' ');
+    const parts = upperStr.split(/[\s,]+/).filter(p => p); // Split by space OR comma, filter empty strings
     
-    if (parts.length >= 4 && parts[parts.length - 1].length === 4 && !isNaN(parseInt(parts[parts.length - 1]))) {
-        if (parts.length > 3 && parts[1].length >= 3) {
-            const month = parts[1].replace(',', '');
-            const year = parts[parts.length - 1];
-            return `${month.substring(0, 3)} ${year}`.toUpperCase();
+    // Handle "Month-YY" format FIRST (e.g., "Apr-26", "Jan-26") before splitting by space
+    if (parts.length === 1 && parts[0].includes('-') && parts[0].split('-').length === 2) {
+        const [month, yearDigits] = parts[0].split('-');
+        if (month.length >= 3 && yearDigits.length === 2) {
+            return `${month.substring(0, 3)} 20${yearDigits}`;
         }
     }
     
-    if (dateStr.includes('-') || dateStr.includes('–')) {
-        const startPart = dateStr.split(/[-–]/)[0].trim();
-        return extractMonthYear(startPart);
+    // Define valid month names
+    const monthNames = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 
+                        'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER',
+                        'JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    
+    // Find the year
+    const year = parts.find(p => p.length === 4 && !isNaN(parseInt(p)));
+    if (!year) return null;
+    
+    // Define days of week to filter them out
+    const daysOfWeek = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    
+    // Find the first part that is a valid month name
+    for (let i = 0; i < parts.length; i++) {
+        const part = parts[i];
+        // Skip if it's a day of week
+        if (daysOfWeek.includes(part)) continue;
+        // Skip if it's a number (day of month or year)
+        if (!isNaN(parseInt(part))) continue;
+        // Check if it's a valid month name
+        if (monthNames.includes(part) || monthNames.includes(part.substring(0, 3))) {
+            return `${part.substring(0, 3)} ${year}`;
+        }
     }
     
-    if (parts.length >= 1) {
-        const lastPart = parts[parts.length - 1];
-        const secondLastPart = parts.length > 1 ? parts[parts.length - 2] : '';
-        
-        if (lastPart.includes('-') && lastPart.split('-').length === 2) {
-            const [month, yearDigits] = lastPart.split('-');
-            return `${month.substring(0, 3)} 20${yearDigits}`.toUpperCase();
-        }
-        
-        if (lastPart.length === 4 && !isNaN(parseInt(lastPart)) && parseInt(lastPart) >= 2025) {
-            if (secondLastPart.length >= 3 && isNaN(parseInt(secondLastPart))) {
-                return `${secondLastPart.substring(0, 3)} ${lastPart}`.toUpperCase();
-            }
-        }
-    }
     return null;
 }
 
@@ -103,10 +108,29 @@ function parseExamDate(examStr) {
 
 function getExamStatus(exam) {
     const today = new Date('2025-11-14');
-    const openDate = new Date(exam.open);
-    const closeDate = new Date(exam.close);
     
-    if (isNaN(openDate.getTime()) || isNaN(closeDate.getTime())) {
+    // Helper function to parse dates more intelligently
+    const parseDate = (dateStr) => {
+        if (!dateStr || dateStr === 'TBA') return null;
+        
+        // Handle "Month-YY" format (e.g., "Apr-26", "Jan-26")
+        const shortFormat = dateStr.match(/^([A-Za-z]{3})-(\d{2})$/);
+        if (shortFormat) {
+            const [, month, year] = shortFormat;
+            // Assume 20XX for 2-digit years
+            return new Date(`${month} 1, 20${year}`);
+        }
+        
+        // Handle "Month YYYY" or other formats
+        const parsed = new Date(dateStr);
+        return isNaN(parsed.getTime()) ? null : parsed;
+    };
+    
+    const openDate = parseDate(exam.open);
+    const closeDate = parseDate(exam.close);
+    
+    // If we can't parse the dates, mark as upcoming
+    if (!openDate || !closeDate) {
         return 'upcoming';
     }
     
@@ -190,6 +214,9 @@ function renderExamCards() {
     const grid = document.getElementById('exam-cards-grid');
     const filtered = filterExams();
     
+    // Always update the count, even when no exams match
+    updateResultsCount(filtered.length);
+    
     if (filtered.length === 0) {
         grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500"><p class="text-lg">No exams match your criteria.</p><p class="text-sm mt-2">Try adjusting your filters.</p></div>';
         return;
@@ -203,7 +230,10 @@ function renderExamCards() {
         return `
             <div class="exam-card ${isTracked ? 'tracked' : ''}">
                 <div class="flex items-start justify-between mb-3">
-                    <h4 class="text-lg font-bold font-montserrat flex-1">${exam.name}</h4>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold font-montserrat">${exam.name}</h4>
+                        <p class="text-xs text-gray-500 mt-1 italic">${exam.fullName}</p>
+                    </div>
                     <span class="${getTypeBadgeClass(exam.type)} ml-2">${getTypeLabel(exam.type)}</span>
                 </div>
                 
@@ -232,25 +262,69 @@ function renderExamCards() {
                 </div>
                 
                 <div class="flex gap-2 pt-4 border-t border-gray-200">
-                    <button onclick="toggleTracking('${exam.name}')" class="track-btn ${isTracked ? 'tracked' : ''}">
+                    <!-- HIDDEN FEATURE: Track button - preserved for future use -->
+                    <!-- <button onclick="toggleTracking('${exam.name}')" class="track-btn ${isTracked ? 'tracked' : ''}">
                         <svg class="w-4 h-4" fill="${isTracked ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         ${isTracked ? 'Tracked' : 'Track'}
-                    </button>
-                    <button onclick="showExamDetails('${exam.name}')" class="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-semibold text-sm transition-all">
+                    </button> -->
+                    <button onclick="showExamDetails('${exam.name}')" class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm transition-all">
                         View Details
                     </button>
                 </div>
             </div>
         `;
     }).join('');
-    
-    updateResultsCount(filtered.length);
 }
 
+// Render Exam Calendar Table
+function renderExamTable() {
+    const tableBody = document.getElementById('exam-table-body');
+    if (!tableBody) return;
+    
+    // Sort exams by application opening date
+    const sortedExams = [...examData].sort((a, b) => {
+        const dateA = new Date(a.open);
+        const dateB = new Date(b.open);
+        return dateA - dateB;
+    });
+    
+    tableBody.innerHTML = sortedExams.map(exam => {
+        const status = getExamStatus(exam);
+        const statusClass = getStatusBadgeClass(status);
+        const typeClass = getTypeBadgeClass(exam.type);
+        
+        return `
+            <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                <td class="p-3">
+                    <div class="font-semibold">${exam.name}</div>
+                    <div class="text-xs text-gray-500 italic">${exam.fullName}</div>
+                </td>
+                <td class="p-3">
+                    <span class="${typeClass}">${getTypeLabel(exam.type)}</span>
+                </td>
+                <td class="p-3">${exam.open}</td>
+                <td class="p-3">
+                    <div class="font-semibold ${status === 'closing-soon' ? 'text-red-600' : ''}">${exam.close}</div>
+                    ${status === 'closing-soon' ? '<div class="text-xs text-red-600">Closing Soon!</div>' : ''}
+                </td>
+                <td class="p-3">${exam.exam}</td>
+                <td class="p-3">${exam.result}</td>
+                <td class="p-3">${exam.conductingBody}</td>
+            </tr>
+        `;
+    }).join('');
+}
+
+// HIDDEN FEATURE: Urgent Deadlines
 function renderUrgentDeadlines() {
+    // Function commented out as urgent deadlines section is hidden
+    // const container = document.getElementById('urgent-deadlines');
+    // if (!container) return; // Guard against missing element
     const container = document.getElementById('urgent-deadlines');
+    if (!container) return; // Guard against missing element
+    
     const urgent = examData
         .map(exam => ({ ...exam, status: getExamStatus(exam), days: getDaysUntilDeadline(exam.close) }))
         .filter(exam => exam.status === 'closing-soon' || (exam.status === 'open' && exam.days && exam.days <= 7))
@@ -283,14 +357,24 @@ function renderTimeline() {
     const appData = [];
     const examDateData = [];
     
+    // Include ALL exams in the chart, even if they have missing data
+    filtered.forEach(exam => {
+        chartLabels.push(exam.name);
+    });
+    
+    // Collect data for bars - only add data objects for exams with valid dates
     filtered.forEach(exam => {
         const appRange = parseDateRange(exam.open, exam.close);
         const examRange = parseExamDate(exam.exam);
         
-        if (appRange || examRange) {
-            chartLabels.push(exam.name);
-            appData.push(appRange ? { x: appRange, y: exam.name, fullDate: `${exam.open} - ${exam.close}` } : undefined);
-            examDateData.push(examRange ? { x: examRange, y: exam.name, fullDate: `${exam.exam}` } : undefined);
+        // Only add to data arrays if the date range is valid
+        // Chart.js will only render bars that have matching y-values in labels
+        if (appRange) {
+            appData.push({ x: appRange, y: exam.name, fullDate: `${exam.open} - ${exam.close}` });
+        }
+        
+        if (examRange) {
+            examDateData.push({ x: examRange, y: exam.name, fullDate: `${exam.exam}` });
         }
     });
     
@@ -304,30 +388,59 @@ function renderTimeline() {
 }
 
 function updateSidebar() {
-    // Quick Stats
-    document.getElementById('sidebar-tracked').textContent = trackedExams.size;
-    document.getElementById('tracked-count').textContent = trackedExams.size;
+    // Quick Stats - HIDDEN FEATURE: Tracked elements commented out
+    // document.getElementById('sidebar-tracked')?.textContent = trackedExams.size;
+    const trackedEl = document.getElementById('tracked-count');
+    if (trackedEl) trackedEl.textContent = trackedExams.size;
     
     const openExams = examData.filter(e => getExamStatus(e) === 'open' || getExamStatus(e) === 'closing-soon').length;
-    document.getElementById('sidebar-open').textContent = openExams;
+    const sidebarOpenEl = document.getElementById('sidebar-open');
+    if (sidebarOpenEl) sidebarOpenEl.textContent = openExams;
     
-    // Next Deadline
-    const nextExam = examData
-        .map(e => ({ ...e, days: getDaysUntilDeadline(e.close) }))
-        .filter(e => e.days)
-        .sort((a, b) => a.days - b.days)[0];
-    document.getElementById('sidebar-next').textContent = nextExam ? `${nextExam.days}d` : '--';
+    // HIDDEN FEATURE: Next Deadline - removed from UI
+    // const nextExam = examData
+    //     .map(e => ({ ...e, days: getDaysUntilDeadline(e.close) }))
+    //     .filter(e => e.days)
+    //     .sort((a, b) => a.days - b.days)[0];
+    // const sidebarNextEl = document.getElementById('sidebar-next');
+    // if (sidebarNextEl) sidebarNextEl.textContent = nextExam ? `${nextExam.days}d` : '--';
     
-    // Busiest Month
-    const monthCounts = {};
+    // Busiest Month - Three separate stats
+    // 1. Busiest month for application opens
+    const openMonthCounts = {};
+    examData.forEach(exam => {
+        const month = extractMonthYear(exam.open);
+        if (month) {
+            openMonthCounts[month] = (openMonthCounts[month] || 0) + 1;
+        }
+    });
+    const busiestOpen = Object.entries(openMonthCounts).sort((a, b) => b[1] - a[1])[0];
+    const sidebarBusiestOpenEl = document.getElementById('sidebar-busiest-open');
+    if (sidebarBusiestOpenEl) sidebarBusiestOpenEl.textContent = busiestOpen ? busiestOpen[0].split(' ')[0] : '--';
+    
+    // 2. Busiest month for application closes
+    const closeMonthCounts = {};
+    examData.forEach(exam => {
+        const month = extractMonthYear(exam.close);
+        if (month) {
+            closeMonthCounts[month] = (closeMonthCounts[month] || 0) + 1;
+        }
+    });
+    const busiestClose = Object.entries(closeMonthCounts).sort((a, b) => b[1] - a[1])[0];
+    const sidebarBusiestCloseEl = document.getElementById('sidebar-busiest-close');
+    if (sidebarBusiestCloseEl) sidebarBusiestCloseEl.textContent = busiestClose ? busiestClose[0].split(' ')[0] : '--';
+    
+    // 3. Busiest month for exams
+    const examMonthCounts = {};
     examData.forEach(exam => {
         const month = extractMonthYear(exam.exam);
         if (month) {
-            monthCounts[month] = (monthCounts[month] || 0) + 1;
+            examMonthCounts[month] = (examMonthCounts[month] || 0) + 1;
         }
     });
-    const busiest = Object.entries(monthCounts).sort((a, b) => b[1] - a[1])[0];
-    document.getElementById('sidebar-busiest').textContent = busiest ? busiest[0].split(' ')[0] : '--';
+    const busiestExam = Object.entries(examMonthCounts).sort((a, b) => b[1] - a[1])[0];
+    const sidebarBusiestExamEl = document.getElementById('sidebar-busiest-exam');
+    if (sidebarBusiestExamEl) sidebarBusiestExamEl.textContent = busiestExam ? busiestExam[0].split(' ')[0] : '--';
     
     // Type Breakdown
     const national = examData.filter(e => e.type === 'G').length;
@@ -335,27 +448,37 @@ function updateSidebar() {
     const state = examData.filter(e => e.type === 'S').length;
     const total = examData.length;
     
-    document.getElementById('breakdown-national').textContent = national;
-    document.getElementById('bar-national').style.width = `${(national / total) * 100}%`;
+    const breakdownNationalEl = document.getElementById('breakdown-national');
+    if (breakdownNationalEl) breakdownNationalEl.textContent = national;
+    const barNationalEl = document.getElementById('bar-national');
+    if (barNationalEl) barNationalEl.style.width = `${(national / total) * 100}%`;
     
-    document.getElementById('breakdown-private').textContent = private_;
-    document.getElementById('bar-private').style.width = `${(private_ / total) * 100}%`;
+    const breakdownPrivateEl = document.getElementById('breakdown-private');
+    if (breakdownPrivateEl) breakdownPrivateEl.textContent = private_;
+    const barPrivateEl = document.getElementById('bar-private');
+    if (barPrivateEl) barPrivateEl.style.width = `${(private_ / total) * 100}%`;
     
-    document.getElementById('breakdown-state').textContent = state;
-    document.getElementById('bar-state').style.width = `${(state / total) * 100}%`;
+    const breakdownStateEl = document.getElementById('breakdown-state');
+    if (breakdownStateEl) breakdownStateEl.textContent = state;
+    const barStateEl = document.getElementById('bar-state');
+    if (barStateEl) barStateEl.style.width = `${(state / total) * 100}%`;
 }
 
 function updateResultsCount(count) {
     document.getElementById('results-count').textContent = `Showing ${count} of ${examData.length} exams`;
 }
 
+// HIDDEN FEATURE: Days Until First Deadline
 function updateDaysUntilFirst() {
+    const daysElement = document.getElementById('days-until-first');
+    if (!daysElement) return; // Guard against missing element
+    
     const firstDeadline = examData
         .map(e => ({ ...e, days: getDaysUntilDeadline(e.close) }))
         .filter(e => e.days && e.days > 0)
         .sort((a, b) => a.days - b.days)[0];
     
-    document.getElementById('days-until-first').textContent = firstDeadline ? firstDeadline.days : '0';
+    daysElement.textContent = firstDeadline ? firstDeadline.days : '0';
 }
 
 // Event Handlers
@@ -383,6 +506,10 @@ function showExamDetails(examName) {
     document.getElementById('modal-exam-name').textContent = exam.name;
     document.getElementById('modal-content').innerHTML = `
         <div class="space-y-6">
+            <div class="pb-3 border-b border-gray-200">
+                <p class="text-sm text-gray-600 italic">${exam.fullName}</p>
+            </div>
+            
             <div>
                 <h4 class="text-lg font-bold font-montserrat mb-3">Overview</h4>
                 <div class="grid grid-cols-2 gap-4 text-sm">
@@ -461,9 +588,10 @@ function showExamDetails(examName) {
             </div>
             
             <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-200">
-                <button onclick="toggleTracking('${exam.name}'); showExamDetails('${exam.name}')" class="btn-primary px-6 py-3 rounded-lg font-semibold">
+                <!-- HIDDEN FEATURE: Track button in modal - preserved for future use -->
+                <!-- <button onclick="toggleTracking('${exam.name}'); showExamDetails('${exam.name}')" class="btn-primary px-6 py-3 rounded-lg font-semibold">
                     ${isTracked ? 'Remove from Tracking' : 'Track This Exam'}
-                </button>
+                </button> -->
                 <button class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-all">
                     Download Syllabus
                 </button>
@@ -521,6 +649,13 @@ function toggleDarkMode() {
     document.body.classList.toggle('dark-mode', darkMode);
     document.getElementById('moon-icon').classList.toggle('hidden', darkMode);
     document.getElementById('sun-icon').classList.toggle('hidden', !darkMode);
+    
+    // Reinitialize chart with updated colors
+    if (timelineChart) {
+        timelineChart.destroy();
+    }
+    initializeChart();
+    renderTimeline();
 }
 
 function scrollToExams() {
@@ -580,6 +715,10 @@ function selectExam(examName) {
 // Initialize Chart
 function initializeChart() {
     const ctx = document.getElementById('timelineChart').getContext('2d');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    const textColor = isDarkMode ? '#ffffff' : '#000000';
+    const gridColor = isDarkMode ? '#3a3a3a' : '#e5e7eb';
+    
     timelineChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -588,20 +727,22 @@ function initializeChart() {
                 {
                     label: 'Application Window',
                     data: [],
-                    backgroundColor: 'rgba(26, 115, 232, 0.6)',
+                    backgroundColor: 'rgba(26, 115, 232, 0.7)',
                     borderColor: 'rgba(26, 115, 232, 1)',
-                    borderWidth: 1,
+                    borderWidth: 1.5,
                     borderRadius: 4,
                     borderSkipped: false,
+                    barThickness: 10, // Slightly thinner bars
                 },
                 {
                     label: 'Exam Window',
                     data: [],
-                    backgroundColor: 'rgba(234, 67, 53, 0.6)',
+                    backgroundColor: 'rgba(234, 67, 53, 0.8)',
                     borderColor: 'rgba(234, 67, 53, 1)',
-                    borderWidth: 1,
+                    borderWidth: 1.5,
                     borderRadius: 4,
                     borderSkipped: false,
+                    barThickness: 10, // Slightly thinner bars
                 }
             ]
         },
@@ -609,9 +750,23 @@ function initializeChart() {
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
+            interaction: {
+                mode: 'nearest',
+                axis: 'y',
+                intersect: false
+            },
             plugins: {
                 legend: {
                     position: 'top',
+                    labels: {
+                        boxWidth: 12,
+                        padding: 15,
+                        font: {
+                            size: 13,
+                            weight: 'bold'
+                        },
+                        color: textColor
+                    }
                 },
                 tooltip: {
                     callbacks: {
@@ -630,18 +785,44 @@ function initializeChart() {
                 x: {
                     min: 0.5,
                     max: 10.5,
+                    stacked: false, // Disable stacking on x-axis
                     ticks: {
                         callback: function(value) {
                             return numericToMonth[value] || '';
                         },
                         autoSkip: false,
                         maxRotation: 45,
-                        minRotation: 45
+                        minRotation: 45,
+                        font: {
+                            size: 12,
+                            weight: 'bold'
+                        },
+                        color: textColor
                     },
-                    grid: { display: true }
+                    grid: { 
+                        display: true,
+                        color: gridColor
+                    }
                 },
                 y: {
-                    grid: { display: false }
+                    stacked: false, // Disable stacking on y-axis - this is the key!
+                    offset: true,
+                    grid: { display: false },
+                    ticks: {
+                        font: {
+                            size: 12,
+                            weight: 'bold'
+                        },
+                        color: textColor
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 5,
+                    bottom: 5
                 }
             }
         }
@@ -653,58 +834,84 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle
     document.getElementById('theme-toggle').addEventListener('click', toggleDarkMode);
     
-    // Quick Filters (Hero)
+    // Helper function to sync filter UI state
+    function syncFilterUI() {
+        // Sync Quick Filters (Hero buttons)
+        document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.filter === currentFilter.type) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Sync Advanced Type Filters
+        document.querySelectorAll('.type-filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.typeFilter === currentFilter.type) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Sync Advanced Status Filters
+        document.querySelectorAll('.status-filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.statusFilter === currentFilter.status) {
+                btn.classList.add('active');
+            }
+        });
+    }
+    
+    // Quick Filters (Hero) - Now syncs with Advanced Filters and scrolls to exam cards
     document.querySelectorAll('.quick-filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.quick-filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
             currentFilter.type = e.target.dataset.filter;
-            currentFilter.status = 'all';
-            currentFilter.tracked = false;
+            // Don't reset status - keep whatever the user has selected in Advanced Filters
+            // Only reset if user hasn't used Advanced Filters yet (status is 'all')
+            syncFilterUI();
             renderExamCards();
             renderTimeline();
+            
+            // Scroll to exam cards section smoothly
+            const examCardsSection = document.querySelector('#exam-cards-grid');
+            if (examCardsSection) {
+                examCardsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
     
-    // Type Filters
+    // Type Filters (Advanced) - Now syncs with Quick Filters
     document.querySelectorAll('.type-filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.type-filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
             currentFilter.type = e.target.dataset.typeFilter;
+            syncFilterUI();
             renderExamCards();
             renderTimeline();
         });
     });
     
-    // Status Filters
+    // Status Filters (Advanced)
     document.querySelectorAll('.status-filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.status-filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
             currentFilter.status = e.target.dataset.statusFilter;
+            syncFilterUI();
             renderExamCards();
             renderTimeline();
         });
     });
     
-    // Show Tracked
-    document.getElementById('show-tracked').addEventListener('click', () => {
-        currentFilter.tracked = !currentFilter.tracked;
-        document.getElementById('show-tracked').classList.toggle('bg-blue-600');
-        document.getElementById('show-tracked').classList.toggle('text-white');
-        renderExamCards();
-        renderTimeline();
-    });
+    // HIDDEN FEATURE: Show Tracked
+    // document.getElementById('show-tracked').addEventListener('click', () => {
+    //     currentFilter.tracked = !currentFilter.tracked;
+    //     document.getElementById('show-tracked').classList.toggle('bg-blue-600');
+    //     document.getElementById('show-tracked').classList.toggle('text-white');
+    //     renderExamCards();
+    //     renderTimeline();
+    // });
     
     // Clear Filters
     document.getElementById('clear-filters').addEventListener('click', () => {
         currentFilter = { type: 'all', status: 'all', tracked: false };
-        document.querySelectorAll('.type-filter-btn').forEach(b => b.classList.remove('active'));
-        document.querySelector('[data-type-filter="all"]').classList.add('active');
-        document.querySelectorAll('.status-filter-btn').forEach(b => b.classList.remove('active'));
-        document.querySelector('[data-status-filter="all"]').classList.add('active');
-        document.getElementById('show-tracked').classList.remove('bg-blue-600', 'text-white');
+        syncFilterUI();
         renderExamCards();
         renderTimeline();
     });
@@ -727,6 +934,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize
     initializeChart();
     renderExamCards();
+    renderExamTable();
     renderUrgentDeadlines();
     renderTimeline();
     updateSidebar();

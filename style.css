@@ -760,6 +760,19 @@ body.dark-mode {
     color: #f5f5f5;
 }
 
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .font-montserrat {
+    color: #ffffff !important;
+}
+
 body.dark-mode header {
     background-color: #1a1a1a;
     color: #f5f5f5;
@@ -775,11 +788,19 @@ body.dark-mode .text-gray-900 {
 }
 
 body.dark-mode .text-gray-700 {
-    color: #d1d1d1 !important;
+    color: #e5e5e5 !important;
 }
 
 body.dark-mode .text-gray-600 {
-    color: #a8a8a8 !important;
+    color: #c8c8c8 !important;
+}
+
+body.dark-mode .text-gray-500 {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode .text-blue-100 {
+    color: #e0f0ff !important;
 }
 
 body.dark-mode .border-gray-200 {
@@ -796,6 +817,10 @@ body.dark-mode input {
     border-color: #3a3a3a;
 }
 
+body.dark-mode input::placeholder {
+    color: #888888;
+}
+
 body.dark-mode select {
     background-color: #1a1a1a;
     color: #f5f5f5;
@@ -804,6 +829,7 @@ body.dark-mode select {
 
 body.dark-mode .bg-gray-100 {
     background-color: #2a2a2a !important;
+    color: #f5f5f5 !important;
 }
 
 body.dark-mode .hover\:bg-gray-100:hover {
@@ -817,19 +843,77 @@ body.dark-mode .hover\:bg-gray-200:hover {
 body.dark-mode .exam-card {
     background-color: #2a2a2a;
     border: 1px solid #3a3a3a;
+    color: #f5f5f5;
 }
 
 body.dark-mode .exam-card:hover {
     background-color: #333333;
 }
 
+body.dark-mode .exam-card .font-semibold {
+    color: #ffffff;
+}
+
 body.dark-mode #autocomplete-results {
     background-color: #1a1a1a;
     border: 1px solid #3a3a3a;
+    color: #f5f5f5;
 }
 
 body.dark-mode .autocomplete-item:hover {
     background-color: #2a2a2a;
+}
+
+body.dark-mode .bg-gradient-to-br {
+    color: #f5f5f5;
+}
+
+/* Specific dark mode overrides for Need Help section and Exam Table */
+body.dark-mode #exam-table {
+    background-color: #2a2a2a !important;
+}
+
+/* Make table headers bold */
+#exam-table th {
+    font-weight: 700 !important;
+}
+
+body.dark-mode #exam-table h3 {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode #exam-table th {
+    color: #f5f5f5 !important;
+    border-color: #4a4a4a !important;
+}
+
+body.dark-mode #exam-table td {
+    color: #c8c8c8 !important;
+}
+
+body.dark-mode #exam-table tr {
+    border-color: #3a3a3a !important;
+}
+
+body.dark-mode #exam-table tr:hover {
+    background-color: #333333 !important;
+}
+
+/* Need Help section - keep light blue gradient in light mode, dark gray in dark mode */
+body.dark-mode .bg-gradient-to-br.from-blue-50 {
+    background: linear-gradient(to bottom right, #2a2a2a, #333333) !important;
+}
+
+body.dark-mode .bg-gradient-to-br.from-blue-50 h4 {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .bg-gradient-to-br.from-blue-50 a {
+    color: #60a5fa !important;
+}
+
+body.dark-mode .bg-gradient-to-br.from-blue-50 a:hover {
+    color: #93c5fd !important;
 }
 
 body.dark-mode .shadow-sm,
@@ -837,6 +921,25 @@ body.dark-mode .shadow-lg,
 body.dark-mode .shadow-xl,
 body.dark-mode .shadow-2xl {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+}
+
+body.dark-mode footer {
+    background-color: #2a2a2a;
+    border-top: 1px solid #3a3a3a;
+}
+
+body.dark-mode footer p {
+    color: #c8c8c8;
+}
+
+body.dark-mode footer span {
+    color: #f5f5f5;
 }
 
 /* Hero Section */
@@ -1186,6 +1289,52 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* Light Mode Text Enhancements */
+body:not(.dark-mode) h1,
+body:not(.dark-mode) h2,
+body:not(.dark-mode) h3,
+body:not(.dark-mode) h4,
+body:not(.dark-mode) h5,
+body:not(.dark-mode) h6 {
+    color: #111827 !important;
+}
+
+body:not(.dark-mode) .font-montserrat {
+    color: #111827 !important;
+}
+
+body:not(.dark-mode) .text-gray-600 {
+    color: #4b5563 !important;
+}
+
+body:not(.dark-mode) .text-gray-500 {
+    color: #6b7280 !important;
+}
+
+body:not(.dark-mode) .text-gray-700 {
+    color: #374151 !important;
+}
+
+body:not(.dark-mode) .text-gray-900 {
+    color: #111827 !important;
+}
+
+body:not(.dark-mode) input::placeholder {
+    color: #9ca3af;
+}
+
+body:not(.dark-mode) .exam-card {
+    color: #111827;
+}
+
+body:not(.dark-mode) .exam-card .text-gray-600 {
+    color: #4b5563 !important;
+}
+
+body:not(.dark-mode) .exam-card .font-semibold {
+    color: #1f2937 !important;
 }
 
 /* Loading State */

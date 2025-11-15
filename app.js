@@ -229,39 +229,41 @@ function renderExamCards() {
         
         return `
             <div class="exam-card ${isTracked ? 'tracked' : ''}">
-                <div class="flex items-start justify-between mb-3">
-                    <div class="flex-1">
-                        <h4 class="text-lg font-bold font-montserrat">${exam.name}</h4>
-                        <p class="text-xs text-gray-500 mt-1 italic">${exam.fullName}</p>
+                <div class="exam-card-content">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex-1">
+                            <h4 class="text-lg font-bold font-montserrat">${exam.name}</h4>
+                            <p class="text-xs text-gray-500 mt-1 italic">${exam.fullName}</p>
+                        </div>
+                        <span class="${getTypeBadgeClass(exam.type)} ml-2">${getTypeLabel(exam.type)}</span>
                     </div>
-                    <span class="${getTypeBadgeClass(exam.type)} ml-2">${getTypeLabel(exam.type)}</span>
+                    
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="${getStatusBadgeClass(status)}">${getStatusLabel(status)}</span>
+                        ${daysLeft ? `<span class="text-xs text-gray-600">${daysLeft} days left</span>` : ''}
+                    </div>
+                    
+                    <div class="space-y-2 mb-4 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Form Start:</span>
+                            <span class="font-semibold">${exam.open}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Form End:</span>
+                            <span class="font-semibold ${status === 'closing-soon' ? 'text-red-600' : ''}">${exam.close}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Exam Date:</span>
+                            <span class="font-semibold">${exam.exam}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Conducting Body:</span>
+                            <span class="font-semibold">${exam.conductingBody}</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="${getStatusBadgeClass(status)}">${getStatusLabel(status)}</span>
-                    ${daysLeft ? `<span class="text-xs text-gray-600">${daysLeft} days left</span>` : ''}
-                </div>
-                
-                <div class="space-y-2 mb-4 text-sm">
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Form Start:</span>
-                        <span class="font-semibold">${exam.open}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Form End:</span>
-                        <span class="font-semibold ${status === 'closing-soon' ? 'text-red-600' : ''}">${exam.close}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Exam Date:</span>
-                        <span class="font-semibold">${exam.exam}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Conducting Body:</span>
-                        <span class="font-semibold">${exam.conductingBody}</span>
-                    </div>
-                </div>
-                
-                <div class="flex gap-2 pt-4 border-t border-gray-200">
+                <div class="exam-card-footer">
                     <!-- HIDDEN FEATURE: Track button - preserved for future use -->
                     <!-- <button onclick="toggleTracking('${exam.name}')" class="track-btn ${isTracked ? 'tracked' : ''}">
                         <svg class="w-4 h-4" fill="${isTracked ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">

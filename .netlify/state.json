@@ -1,20 +1,20 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Ghaziabad",
+			"city": "Dehradun",
 			"country": {
 				"code": "IN",
 				"name": "India"
 			},
 			"subdivision": {
-				"code": "UP",
-				"name": "Uttar Pradesh"
+				"code": "UK",
+				"name": "Uttarakhand"
 			},
 			"timezone": "Asia/Kolkata",
-			"latitude": 28.6677,
-			"longitude": 77.4337,
-			"postalCode": "201017"
+			"latitude": 30.3275,
+			"longitude": 78.0325,
+			"postalCode": "248001"
 		},
-		"timestamp": 1763213837971
+		"timestamp": 1763467906396
 	}
 }

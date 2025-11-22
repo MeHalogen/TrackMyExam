@@ -1,5 +1,16 @@
-// Exam Data with Enhanced Information
-const examData = [
+// ============================================
+// GOOGLE SHEETS INTEGRATION
+// ============================================
+// Configuration is loaded from config.js
+// Replace SHEET_API_URL in config.js with your Google Apps Script Web App URL
+// See GOOGLE_SHEETS_SETUP.md for instructions
+
+const SHEET_API_URL = window.TRACKMYEXAM_CONFIG?.SHEET_API_URL || 'YOUR_APPS_SCRIPT_URL_HERE';
+const USE_GOOGLE_SHEETS = window.TRACKMYEXAM_CONFIG?.USE_GOOGLE_SHEETS !== false;
+const DEBUG_MODE = window.TRACKMYEXAM_CONFIG?.DEBUG_MODE || false;
+
+// Fallback data in case Sheet API fails or during development
+const fallbackExamData = [
     { name: "JEE Mains Session 1", fullName: "Joint Entrance Examination Main", type: "G", open: "Friday, October 31, 2025", close: "Thursday, November 27, 2025", exam: "Jan 21 - 30, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "3 hours" },
     { name: "JEE Mains Session 2", fullName: "Joint Entrance Examination Main", type: "G", open: "Late Jan 2026", close: "Feb 2026", exam: "Apr 1 - 10, 2026", result: "Date TBA", conductingBody: "NTA", examMode: "Online", duration: "3 hours" },
     { name: "BITSAT Session 1", fullName: "Birla Institute of Technology and Science Admission Test", type: "P", open: "Jan 2026", close: "Apr 2026", exam: "May 26 - 30, 2026", result: "Date TBA", conductingBody: "BITS", examMode: "Online", duration: "3 hours" },
@@ -23,11 +34,87 @@ const examData = [
     { name: "SRMJEEE 2026 - Phase 3", fullName: "SRM Joint Engineering Entrance Examination", type: "P", open: "TBA", close: "TBA", exam: "Jul 4 - 5, 2026", result: "Date TBA", conductingBody: "SRM", examMode: "Online", duration: "3 hours" }
 ];
 
+// Exam Data - will be loaded from Google Sheets or fallback
+let examData = [...fallbackExamData]; // Start with fallback data immediately
+let isDataFromSheet = false;
+let lastDataFetch = null;
+
+// Fetch exam data from Google Sheets
+async function fetchExamDataFromSheet() {
+    // Check if Google Sheets integration is enabled
+    if (!USE_GOOGLE_SHEETS) {
+        if (DEBUG_MODE) console.log('Google Sheets integration is disabled. Using fallback data.');
+        examData = [...fallbackExamData];
+        isDataFromSheet = false;
+        return false;
+    }
+    
+    // Check if URL is configured
+    if (!SHEET_API_URL || SHEET_API_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+        if (DEBUG_MODE) {
+            console.warn('Google Sheets API URL not configured. Using fallback data.');
+            console.warn('See GOOGLE_SHEETS_SETUP.md for setup instructions.');
+        }
+        examData = [...fallbackExamData];
+        isDataFromSheet = false;
+        return false;
+    }
+
+    try {
+        if (DEBUG_MODE) console.log('Fetching exam data from Google Sheets...');
+        
+        // Add timeout to prevent hanging
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        
+        const response = await fetch(SHEET_API_URL, {
+            signal: controller.signal,
+            cache: 'no-cache' // Force fresh data
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.exams && Array.isArray(data.exams) && data.exams.length > 0) {
+            examData = data.exams;
+            isDataFromSheet = true;
+            lastDataFetch = new Date();
+            if (DEBUG_MODE) console.log(`✅ Loaded ${examData.length} exams from Google Sheets`);
+            if (DEBUG_MODE) console.log(`Last updated: ${data.lastUpdated}`);
+            return true;
+        } else {
+            throw new Error('No exam data found in response');
+        }
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.warn('Request timeout - using fallback data');
+        } else {
+            console.error('Error fetching exam data from Google Sheets:', error);
+            console.warn('Using fallback data instead.');
+        }
+        examData = [...fallbackExamData];
+        isDataFromSheet = false;
+        return false;
+    }
+}
+
+// Show data source indicator - DISABLED
+function showDataSourceIndicator() {
+    // Indicator disabled - data loads silently
+    return;
+}
+
 // Month mapping for timeline 
 const monthToNumeric = {
     "SEP 2025": 0.5, "OCT 2025": 1, "NOV 2025": 2, "DEC 2025": 3,
     "JAN 2026": 4, "FEB 2026": 5, "MAR 2026": 6,
-    "APR 2026": 7, "MAY 2026": 8, "JUN 2026": 9, "JUL 2026": 10
+    "APR 2026": 7, "MAY 2026": 8, "JUN 2026": 9, "JUL 2026": 10,
+    "AUG 2026": 10.5, "SEP 2026": 11, "OCT 2026": 11.5, "NOV 2026": 12, "DEC 2026": 12.5
 };
 
 const numericToMonth = {
@@ -47,15 +134,33 @@ let timelineChart;
 function extractMonthYear(dateStr) {
     if (!dateStr || dateStr.toUpperCase() === 'TBA') return null;
     const upperStr = dateStr.toUpperCase();
-    const parts = upperStr.split(/[\s,]+/).filter(p => p); // Split by space OR comma, filter empty strings
     
-    // Handle "Month-YY" format FIRST (e.g., "Apr-26", "Jan-26") before splitting by space
-    if (parts.length === 1 && parts[0].includes('-') && parts[0].split('-').length === 2) {
-        const [month, yearDigits] = parts[0].split('-');
-        if (month.length >= 3 && yearDigits.length === 2) {
-            return `${month.substring(0, 3)} 20${yearDigits}`;
+    // Handle "Month-YYYY" or "DD-Month-YYYY" format FIRST (e.g., "Dec-2025", "29-Jan-2026")
+    if (upperStr.includes('-')) {
+        const hyphenParts = upperStr.split('-');
+        
+        // Format: "Month-YYYY" (e.g., "Dec-2025")
+        if (hyphenParts.length === 2) {
+            const [month, year] = hyphenParts;
+            if (month.length >= 3 && year.length === 4 && !isNaN(parseInt(year))) {
+                return `${month.substring(0, 3)} ${year}`;
+            }
+            // Format: "Month-YY" (e.g., "Apr-26")
+            if (month.length >= 3 && year.length === 2 && !isNaN(parseInt(year))) {
+                return `${month.substring(0, 3)} 20${year}`;
+            }
+        }
+        
+        // Format: "DD-Month-YYYY" (e.g., "29-Jan-2026")
+        if (hyphenParts.length === 3) {
+            const [day, month, year] = hyphenParts;
+            if (month.length >= 3 && year.length === 4 && !isNaN(parseInt(year))) {
+                return `${month.substring(0, 3)} ${year}`;
+            }
         }
     }
+    
+    const parts = upperStr.split(/[\s,]+/).filter(p => p); // Split by space OR comma, filter empty strings
     
     // Define valid month names
     const monthNames = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 
@@ -202,9 +307,10 @@ function sortExams(exams) {
         } else if (currentSort === 'type') {
             return a.type.localeCompare(b.type);
         } else {
-            const openA = monthToNumeric[extractMonthYear(a.open)] || 100;
-            const openB = monthToNumeric[extractMonthYear(b.open)] || 100;
-            return openA - openB;
+            // Sort by deadline (close date)
+            const closeA = monthToNumeric[extractMonthYear(a.close)] || 100;
+            const closeB = monthToNumeric[extractMonthYear(b.close)] || 100;
+            return closeA - closeB;
         }
     });
 }
@@ -232,18 +338,16 @@ function renderExamCards() {
                 <div class="exam-card-content">
                     <div class="flex items-start justify-between mb-3">
                         <div class="flex-1">
-                            <h4 class="text-lg font-bold font-montserrat">${exam.name}</h4>
-                            <p class="text-xs text-gray-500 mt-1 italic">${exam.fullName}</p>
+                            <h4 class="text-lg font-bold font-montserrat mb-2">${exam.name}</h4>
+                            <span class="${getStatusBadgeClass(status)}">${getStatusLabel(status)}</span>
                         </div>
-                        <span class="${getTypeBadgeClass(exam.type)} ml-2">${getTypeLabel(exam.type)}</span>
+                        <div class="flex flex-col items-end gap-1 ml-2">
+                            <span class="${getTypeBadgeClass(exam.type)}">${getTypeLabel(exam.type)}</span>
+                            ${daysLeft ? `<span class="days-left-text">${daysLeft} days left</span>` : ''}
+                        </div>
                     </div>
                     
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="${getStatusBadgeClass(status)}">${getStatusLabel(status)}</span>
-                        ${daysLeft ? `<span class="text-xs text-gray-600">${daysLeft} days left</span>` : ''}
-                    </div>
-                    
-                    <div class="space-y-2 mb-4 text-sm">
+                    <div class="space-y-2 mb-4 text-sm mt-4">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Form Start:</span>
                             <span class="font-semibold">${exam.open}</span>
@@ -359,6 +463,9 @@ function renderTimeline() {
     const appData = [];
     const examDateData = [];
     
+    console.log('=== Timeline Debug ===');
+    console.log('Filtered exams:', filtered.length);
+    
     // Include ALL exams in the chart, even if they have missing data
     filtered.forEach(exam => {
         chartLabels.push(exam.name);
@@ -368,6 +475,13 @@ function renderTimeline() {
     filtered.forEach(exam => {
         const appRange = parseDateRange(exam.open, exam.close);
         const examRange = parseExamDate(exam.exam);
+        
+        console.log(`${exam.name}:`);
+        console.log(`  open: "${exam.open}" -> ${extractMonthYear(exam.open)}`);
+        console.log(`  close: "${exam.close}" -> ${extractMonthYear(exam.close)}`);
+        console.log(`  exam: "${exam.exam}" -> ${extractMonthYear(exam.exam)}`);
+        console.log(`  appRange: ${appRange}`);
+        console.log(`  examRange: ${examRange}`);
         
         // Only add to data arrays if the date range is valid
         // Chart.js will only render bars that have matching y-values in labels
@@ -379,6 +493,10 @@ function renderTimeline() {
             examDateData.push({ x: examRange, y: exam.name, fullDate: `${exam.exam}` });
         }
     });
+    
+    console.log('appData count:', appData.length);
+    console.log('examDateData count:', examDateData.length);
+    console.log('===================');
     
     if (timelineChart) {
         timelineChart.data.labels = chartLabels;
@@ -468,6 +586,12 @@ function updateSidebar() {
 
 function updateResultsCount(count) {
     document.getElementById('results-count').textContent = `Showing ${count} of ${examData.length} exams`;
+    
+    // Update hero section total count
+    const totalExamsElement = document.getElementById('total-exams-count');
+    if (totalExamsElement) {
+        totalExamsElement.textContent = examData.length;
+    }
 }
 
 // HIDDEN FEATURE: Days Until First Deadline
@@ -594,15 +718,16 @@ function showExamDetails(examName) {
                 <!-- <button onclick="toggleTracking('${exam.name}'); showExamDetails('${exam.name}')" class="btn-primary px-6 py-3 rounded-lg font-semibold">
                     ${isTracked ? 'Remove from Tracking' : 'Track This Exam'}
                 </button> -->
-                <button class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-all">
-                    Download Syllabus
-                </button>
-                <button class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-all">
+                ${exam.syllabusLink ? `<a href="${exam.syllabusLink}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-all inline-block">
+                    View Syllabus
+                </a>` : ''}
+                ${exam.officialWebsite ? `<a href="${exam.officialWebsite}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-all inline-block">
                     Visit Official Website
-                </button>
-                <button class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-all">
+                </a>` : ''}
+                <!-- HIDDEN FEATURE: Set Reminder button - preserved for future use -->
+                <!-- <button class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-all">
                     Set Reminder
-                </button>
+                </button> -->
             </div>
         </div>
     `;
@@ -724,12 +849,30 @@ function selectExam(examName) {
 
 // Initialize Chart
 function initializeChart() {
-    const ctx = document.getElementById('timelineChart').getContext('2d');
+    const canvas = document.getElementById('timelineChart');
+    if (!canvas) {
+        console.error('Timeline chart canvas not found');
+        return;
+    }
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+        console.error('Could not get 2D context for timeline chart');
+        return;
+    }
+    
+    // Destroy existing chart if it exists
+    if (timelineChart) {
+        timelineChart.destroy();
+        timelineChart = null;
+    }
+    
     const isDarkMode = document.body.classList.contains('dark-mode');
     const textColor = isDarkMode ? '#ffffff' : '#000000';
     const gridColor = isDarkMode ? '#3a3a3a' : '#e5e7eb';
     
-    timelineChart = new Chart(ctx, {
+    try {
+        timelineChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [],
@@ -837,10 +980,42 @@ function initializeChart() {
             }
         }
     });
+    } catch (error) {
+        console.error('Failed to initialize timeline chart:', error);
+    }
 }
 
 // Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Show loading overlay
+    const loadingOverlay = document.getElementById('global-loading');
+    
+    try {
+        // Fetch fresh data from Google Sheets first
+        const sheetsLoaded = await fetchExamDataFromSheet();
+        
+        // Initialize chart with data loaded
+        initializeChart();
+        
+        // Render with the loaded data (either from Sheets or fallback)
+        renderExamCards();
+        renderExamTable();
+        renderUrgentDeadlines();
+        renderTimeline();
+        updateSidebar();
+        updateDaysUntilFirst();
+        
+        // Data source indicator disabled
+        // showDataSourceIndicator();
+    } catch (error) {
+        console.error('Error loading data:', error);
+    } finally {
+        // Hide loading overlay after everything is loaded
+        setTimeout(() => {
+            loadingOverlay.classList.add('hidden');
+        }, 300); // Small delay for smooth transition
+    }
+    
     // Theme Toggle
     document.getElementById('theme-toggle').addEventListener('click', toggleDarkMode);
     
@@ -945,13 +1120,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Autocomplete
     setupAutocomplete();
-    
-    // Initialize
-    initializeChart();
-    renderExamCards();
-    renderExamTable();
-    renderUrgentDeadlines();
-    renderTimeline();
-    updateSidebar();
-    updateDaysUntilFirst();
 });

@@ -1,0 +1,24 @@
+{
+  "name": "trackmyexam",
+  "version": "1.0.0",
+  "description": "Engineering Entrance Exam Tracker",
+  "main": "app.js",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required'"
+  },
+  "keywords": [
+    "exam",
+    "tracker",
+    "engineering",
+    "entrance"
+  ],
+  "author": "Mehal Srivastava",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.7",
+    "sqlite3": "^5.1.6"
+  }
+}

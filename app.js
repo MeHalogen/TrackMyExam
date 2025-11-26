@@ -309,9 +309,15 @@ function sortExams(exams) {
         } else if (currentSort === 'type') {
             return a.type.localeCompare(b.type);
         } else {
-            // Sort by deadline (close date)
-            const closeA = monthToNumeric[extractMonthYear(a.close)] || 100;
-            const closeB = monthToNumeric[extractMonthYear(b.close)] || 100;
+            // Sort by deadline (close date) - use actual date comparison
+            const closeA = new Date(a.close);
+            const closeB = new Date(b.close);
+            
+            // Handle invalid dates by pushing them to the end
+            if (isNaN(closeA.getTime()) && isNaN(closeB.getTime())) return 0;
+            if (isNaN(closeA.getTime())) return 1;
+            if (isNaN(closeB.getTime())) return -1;
+            
             return closeA - closeB;
         }
     });

@@ -212,7 +212,8 @@ function parseExamDate(examStr) {
 }
 
 function getExamStatus(exam) {
-    const today = new Date('2025-11-14');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset to start of day for accurate comparison
     
     // Helper function to parse dates more intelligently
     const parseDate = (dateStr) => {
@@ -249,7 +250,8 @@ function getExamStatus(exam) {
 }
 
 function getDaysUntilDeadline(dateStr) {
-    const today = new Date('2025-11-14');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset to start of day for accurate calculation
     const deadline = new Date(dateStr);
     if (isNaN(deadline.getTime())) return null;
     const days = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));

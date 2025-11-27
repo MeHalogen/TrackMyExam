@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trackmyexam.online/sitemap.xml
+Host: https://trackmyexam.online

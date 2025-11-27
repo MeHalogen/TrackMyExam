@@ -9,11 +9,44 @@
       gtag('js', new Date());
       gtag('config', 'G-ZPF6GW6NVW');
     </script>
+    <!-- ======= SEO & Social Meta (paste into <head>) ======= -->
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://trackmyexam.online/" />
+
+    <!-- Primary meta -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="TrackMyExam" />
+    <meta name="keywords" content="JEE 2026 dates, engineering entrance exam dates, JEE Main 2026, BITSAT 2026, MHT CET 2026, exam tracker India" />
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TrackMyExam — Engineering Entrance Exam Tracker 2026 | Never Miss a Deadline" />
+    <meta property="og:description" content="TrackMyExam helps you track all major engineering entrance exams across India including JEE, BITSAT, MHT CET and more. Never miss an application deadline." />
+    <meta property="og:url" content="https://trackmyexam.online/" />
+    <meta property="og:site_name" content="TrackMyExam" />
+    <meta property="og:image" content="https://trackmyexam.online/social-preview.png" />
+    <meta property="og:image:alt" content="TrackMyExam — Engineering Entrance Exam Tracker" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@meh_al_faazmusic" />
+    <meta name="twitter:title" content="TrackMyExam — Engineering Entrance Exam Tracker 2026" />
+    <meta name="twitter:description" content="Track all major engineering entrance exams across India and never miss an application window." />
+    <meta name="twitter:image" content="https://trackmyexam.online/social-preview.png" />
+
+    <!-- Preload LCP font (optional) -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/vX/xxxxx.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- (If you use Montserrat as primary, preload the hero weight similarly) -->
+
+    <!-- Mobile / PWA hint -->
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="manifest" href="/manifest.json" />
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrackMyExam - Engineering Entrance Exam Tracker 2026 | Never Miss a Deadline</title>
-    <meta name="description" content="TrackMyExam helps you track all major engineering entrance exams across India including JEE, BITSAT, MHT CET and more. Never miss an application deadline.">
+    <title>TrackMyExam — Engineering Exam Dates 2026 | JEE, BITSAT, CUET</title>
+    <meta name="description" content="TrackMyExam tracks engineering entrance exams in India (JEE, BITSAT, MHT CET & more). See application windows, exam dates & never miss a deadline.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -28,6 +61,65 @@
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5515373618288907"
      crossorigin="anonymous"></script>
+    
+    <!-- Apply dark mode immediately to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                // Add class to body as soon as possible
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('dark-mode');
+                });
+            }
+        })();
+    </script>
+
+    <!-- ======= JSON-LD Structured Data ======= -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+        "@type": "WebSite",
+        "@id": "https://trackmyexam.online/#website",
+        "url": "https://trackmyexam.online/",
+        "name": "TrackMyExam",
+        "publisher": {
+            "@id": "https://trackmyexam.online/#organization"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://trackmyexam.online/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+        },
+        {
+        "@type": "Organization",
+        "@id": "https://trackmyexam.online/#organization",
+        "name": "TrackMyExam",
+        "url": "https://trackmyexam.online/",
+        "logo": "https://trackmyexam.online/favicon.svg",
+        "sameAs": [
+            "https://www.linkedin.com/in/mehalsrivastava/"
+        ],
+        "contactPoint": [{
+            "@type": "ContactPoint",
+            "email": "trackmyexam.help@gmail.com",
+            "contactType": "customer support",
+            "availableLanguage": ["English"]
+        }]
+        },
+        {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trackmyexam.online/"},
+            {"@type": "ListItem", "position": 2, "name": "Exam Calendar", "item": "https://trackmyexam.online/#exam-table"}
+        ]
+        }
+    ]
+    }
+    </script>
 </head>
 <body class="bg-neutral-50 text-gray-900 transition-colors duration-300">
     
@@ -61,7 +153,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold font-montserrat">TrackMyExam</h1>
+                        <div class="text-xl font-bold font-montserrat">TrackMyExam</div>
                         <p class="text-xs text-gray-600">Stay ahead. Stay prepared.</p>
                     </div>
                 </div>
@@ -83,7 +175,7 @@
     <section class="hero-section bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16 md:py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl font-bold font-montserrat mb-4">Never Miss an Engineering Entrance Exam Again</h2>
+                <h1 class="text-4xl md:text-5xl font-bold font-montserrat mb-4">Never Miss an Engineering Entrance Exam Again</h1>
                 <p class="text-xl md:text-2xl mb-8 text-blue-100">Track all major engineering entrance exams across India. Stay updated with deadlines, exam dates, and never miss an application window.</p>
                 
                 <!-- Hero Search Bar -->
@@ -392,8 +484,15 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 py-6 mt-12">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-600 text-sm">
+            <p class="text-gray-600 text-sm mb-2">
                 Built by <a href="https://www.linkedin.com/in/mehalsrivastava/" target="_blank" rel="noopener noreferrer" class="font-semibold text-gray-900 hover:text-blue-600 transition-colors">Mehal Srivastava</a> • For Students, With Purpose
+            </p>
+            <p class="text-gray-500 text-xs">
+                <a href="privacy.html" class="hover:text-blue-600 transition-colors underline">Privacy Policy</a>
+                <span class="mx-2">•</span>
+                <a href="terms.html" class="hover:text-blue-600 transition-colors underline">Terms of Use</a>
+                <span class="mx-2">•</span>
+                <a href="contact.html" class="hover:text-blue-600 transition-colors underline">Contact</a>
             </p>
         </div>
     </footer>

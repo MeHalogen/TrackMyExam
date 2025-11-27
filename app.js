@@ -787,11 +787,77 @@ function hideNotification() {
     bar.classList.add('translate-y-full');
 }
 
+// Update page title and meta description based on current filter
+function updateSEOMeta() {
+    let title = 'TrackMyExam - Engineering Entrance Exam Tracker 2026';
+    let description = 'Track all major engineering entrance exams across India including JEE, BITSAT, MHT CET and more. Never miss an application deadline.';
+    
+    // Check if a specific filter is active
+    if (currentFilter.type && currentFilter.type !== 'all') {
+        const filterTitles = {
+            'upcoming': 'Upcoming Engineering Entrance Exams 2026',
+            'open': 'Open for Registration - Engineering Exams 2026',
+            'closed': 'Closed Engineering Exams 2026',
+            'G': 'Government Engineering Entrance Exams 2026',
+            'P': 'Private University Engineering Entrance Exams 2026',
+            'S': 'State-Level Engineering Entrance Exams 2026'
+        };
+        
+        const filterDescriptions = {
+            'upcoming': 'View all upcoming engineering entrance exams in India for 2026. Stay updated with exam dates and registration deadlines for JEE, BITSAT, and more.',
+            'open': 'Engineering entrance exams currently open for registration in 2026. Apply now for JEE Main, BITSAT, MHT CET, and other major exams.',
+            'closed': 'Past engineering entrance exams with closed registration for 2026. Check results and important dates.',
+            'G': 'Track all government-conducted engineering entrance exams like JEE Main, JEE Advanced, and CUET for 2026 admissions.',
+            'P': 'View dates and deadlines for private university engineering exams including BITSAT, VITEEE, SRMJEEE, and more.',
+            'S': 'State-level engineering entrance exams including MHT CET, WBJEE, KCET, TS EAMCET, and other state CETs for 2026.'
+        };
+        
+        if (filterTitles[currentFilter.type]) {
+            title = `${filterTitles[currentFilter.type]} | TrackMyExam`;
+            description = filterDescriptions[currentFilter.type];
+        }
+    }
+    
+    // Update title
+    document.title = title;
+    
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute('content', description);
+    }
+    
+    // Update Open Graph meta tags
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+        ogTitle.setAttribute('content', title);
+    }
+    
+    let ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+        ogDescription.setAttribute('content', description);
+    }
+    
+    // Update Twitter meta tags
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+        twitterTitle.setAttribute('content', title);
+    }
+    
+    let twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) {
+        twitterDescription.setAttribute('content', description);
+    }
+}
+
 function toggleDarkMode() {
     darkMode = !darkMode;
     document.body.classList.toggle('dark-mode', darkMode);
     document.getElementById('moon-icon').classList.toggle('hidden', darkMode);
     document.getElementById('sun-icon').classList.toggle('hidden', !darkMode);
+    
+    // Save theme preference to localStorage
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
     
     // Reinitialize chart with updated colors
     if (timelineChart) {
@@ -799,6 +865,22 @@ function toggleDarkMode() {
     }
     initializeChart();
     renderTimeline();
+}
+
+function initializeDarkMode() {
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        darkMode = true;
+        document.body.classList.add('dark-mode');
+        document.getElementById('moon-icon').classList.add('hidden');
+        document.getElementById('sun-icon').classList.remove('hidden');
+    } else {
+        darkMode = false;
+        document.body.classList.remove('dark-mode');
+        document.getElementById('moon-icon').classList.remove('hidden');
+        document.getElementById('sun-icon').classList.add('hidden');
+    }
 }
 
 function scrollToExams() {
@@ -995,6 +1077,9 @@ function initializeChart() {
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize dark mode from localStorage first
+    initializeDarkMode();
+    
     // Show loading overlay
     const loadingOverlay = document.getElementById('global-loading');
     
@@ -1061,6 +1146,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Don't reset status - keep whatever the user has selected in Advanced Filters
             // Only reset if user hasn't used Advanced Filters yet (status is 'all')
             syncFilterUI();
+            updateSEOMeta(); // Update SEO meta tags
             renderExamCards();
             renderTimeline();
             
@@ -1077,6 +1163,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         btn.addEventListener('click', (e) => {
             currentFilter.type = e.target.dataset.typeFilter;
             syncFilterUI();
+            updateSEOMeta(); // Update SEO meta tags
             renderExamCards();
             renderTimeline();
         });
@@ -1087,6 +1174,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         btn.addEventListener('click', (e) => {
             currentFilter.status = e.target.dataset.statusFilter;
             syncFilterUI();
+            updateSEOMeta(); // Update SEO meta tags
             renderExamCards();
             renderTimeline();
         });

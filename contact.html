@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – TrackMyExam</title>
+  <meta name="description" content="Contact TrackMyExam - Get in touch with us for questions, corrections, or suggestions.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Apply dark mode immediately to prevent flash -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('dark-mode');
+        });
+      }
+    })();
+  </script>
+
+  <style>
+    html{
+      scroll-padding-top:100px;
+    }
+    :root{
+      --bg:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --accent:#1a73e8;
+      --container:940px;
+      --radius:10px;
+      --read-width:760px;
+    }
+    body{
+      margin:0;
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    header{
+      padding:18px 24px;
+      border-bottom:1px solid #e5e7eb;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand{
+      text-decoration:none;
+      color:var(--text);
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:42px;
+      height:42px;
+      background:linear-gradient(135deg,#1a73e8,#34a853);
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:16px;
+    }
+    main{
+      max-width:var(--container);
+      margin:32px auto;
+      padding:0 20px 60px;
+    }
+    h1{
+      font-size:32px;
+      margin:0 0 8px;
+      font-weight:800;
+    }
+    .meta{
+      margin-bottom:24px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .layout{
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    article{
+      max-width:var(--read-width);
+      line-height:1.65;
+    }
+    article h2{
+      margin-top:38px;
+      font-size:22px;
+      font-weight:700;
+    }
+    article h3{
+      margin-top:26px;
+      font-size:18px;
+      font-weight:600;
+      color:#111827;
+    }
+    article p, article li{
+      font-size:15px;
+      margin:10px 0;
+    }
+    article a{
+      color:#1a73e8;
+      text-decoration:underline;
+    }
+    article a:hover{
+      color:#1557b0;
+    }
+    ul{
+      padding-left:20px;
+    }
+    .contact-box{
+      background: #f8f9fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .contact-box .email{
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a73e8;
+      margin: 16px 0;
+    }
+    .contact-box svg{
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      color: #1a73e8;
+    }
+    footer{
+      margin-top:40px;
+      padding-top:20px;
+      border-top:1px solid #e5e7eb;
+      text-align:center;
+      font-size:14px;
+      color:var(--muted);
+    }
+    footer a{
+      color:var(--muted);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover{
+      color:var(--accent);
+    }
+    
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #1f2121 !important;
+      color: #f5f5f5 !important;
+    }
+    body.dark-mode header {
+      background: #2a2c2c !important;
+      border-bottom-color: #3a3c3c !important;
+    }
+    body.dark-mode header h1,
+    body.dark-mode header p {
+      color: #f5f5f5 !important;
+    }
+    body.dark-mode header .text-gray-600 {
+      color: #9ca3af !important;
+    }
+    body.dark-mode header svg {
+      color: #f5f5f5 !important;
+    }
+    body.dark-mode header button:hover {
+      background: #3a3c3c !important;
+    }
+    body.dark-mode header a {
+      color: #d1d5db !important;
+    }
+    body.dark-mode header a:hover {
+      color: #60a5fa !important;
+      background: #3a3c3c !important;
+    }
+    body.dark-mode main {
+      background: #1f2121;
+    }
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3 {
+      color: #f5f5f5 !important;
+    }
+    body.dark-mode article p,
+    body.dark-mode article li {
+      color: #d1d5db;
+    }
+    body.dark-mode article a {
+      color: #60a5fa;
+    }
+    body.dark-mode article a:hover {
+      color: #93c5fd;
+    }
+    body.dark-mode .contact-box {
+      background: #2a2c2c;
+      border-color: #3a3c3c;
+    }
+    body.dark-mode .contact-box .email {
+      color: #60a5fa;
+    }
+    body.dark-mode .contact-box svg {
+      color: #60a5fa;
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-50 text-gray-900 transition-colors duration-300">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <!-- Back Button -->
+                    <a href="index.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        <span class="font-medium">Back to TrackMyExam</span>
+                    </a>
+                    
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold font-montserrat">TrackMyExam</h1>
+                            <p class="text-xs text-gray-600">Stay ahead. Stay prepared.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Toggle dark mode">
+                        <svg id="moon-icon" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg id="sun-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<main>
+  <h1 style="font-size: 42px; font-weight: 900; text-align: center; margin: 40px 0 30px;">Contact Us</h1>
+
+  <div class="layout">
+    <!-- MAIN ARTICLE -->
+    <article style="max-width: 800px; margin: 0 auto;">
+
+      <p style="text-align: center; font-size: 17px; margin-bottom: 32px;">We'd love to hear from you! Whether you have questions, corrections, suggestions, or feedback, feel free to reach out to us.</p>
+
+      <div class="contact-box">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+        <h2 style="margin: 0; font-size: 24px;">Get in Touch</h2>
+        <p style="color: #6b7280; margin: 12px 0 8px;">Send us an email at:</p>
+        <div class="email">
+          <a href="mailto:trackmyexam@gmail.com">trackmyexam@gmail.com</a>
+        </div>
+      </div>
+
+      <h2>What We Can Help With</h2>
+      <ul>
+        <li><strong>Exam Information Updates:</strong> If you notice any incorrect dates, deadlines, or exam details, please let us know so we can update them promptly.</li>
+        <li><strong>Feature Suggestions:</strong> Have an idea for a new feature that would make TrackMyExam more useful? We're all ears!</li>
+        <li><strong>Technical Issues:</strong> Experiencing problems with the website or your account? Report any bugs or technical difficulties.</li>
+        <li><strong>General Inquiries:</strong> Questions about how TrackMyExam works or what we offer? Feel free to ask!</li>
+        <li><strong>Partnership Opportunities:</strong> Interested in collaborating or partnering with TrackMyExam? Reach out to discuss possibilities.</li>
+        <li><strong>Feedback:</strong> Your feedback helps us improve. Share your thoughts on what works well and what could be better.</li>
+      </ul>
+
+      <h2>Response Time</h2>
+      <p>We strive to respond to all inquiries within 24-48 hours during business days. For urgent matters related to exam date corrections, we aim to respond even faster to ensure students have the most accurate information.</p>
+
+      <h2>Before You Contact Us</h2>
+      <p>To help us assist you more efficiently, please:</p>
+      <ul>
+        <li>Check our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a> for answers to common policy questions</li>
+        <li>Provide specific details about any issues you're experiencing</li>
+        <li>Include relevant exam names or dates when reporting corrections</li>
+        <li>Use a clear subject line in your email</li>
+      </ul>
+
+      <h2>Stay Connected</h2>
+      <p>Follow TrackMyExam for updates and announcements. We're constantly working to improve the platform and add more features to help students succeed!</p>
+
+    </article>
+  </div>
+
+</main>
+
+<script>
+// Dark mode toggle
+const themeToggle = document.getElementById('theme-toggle');
+const moonIcon = document.getElementById('moon-icon');
+const sunIcon = document.getElementById('sun-icon');
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem('theme') || 'light';
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark-mode');
+  moonIcon.classList.add('hidden');
+  sunIcon.classList.remove('hidden');
+}
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+  
+  moonIcon.classList.toggle('hidden', isDark);
+  sunIcon.classList.toggle('hidden', !isDark);
+  
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+</script>
+
+</body>
+</html>
